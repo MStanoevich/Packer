@@ -5,6 +5,7 @@ import exceptions.APIException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,10 +41,15 @@ public class PacketFilerReader {
         List<Item> items = new ArrayList<>();
         for(String value : itemArray){
             String[] itemDetailArray = value.split(",");
-            items.add(new Item((Integer.parseInt(itemDetailArray[0])), Double.parseDouble(itemDetailArray[1]),
+            items.add(new Item((Integer.parseInt(itemDetailArray[0])), changeWeightRepresentation(Double.parseDouble(itemDetailArray[1])),
                     Integer.parseInt(itemDetailArray[2])));
 
         }
         return items;
+    }
+
+    public int changeWeightRepresentation(double weight){
+        BigDecimal bigDecimalWeight = new BigDecimal(weight);
+        return bigDecimalWeight.multiply(new BigDecimal(100)).toBigInteger().intValue();
     }
 }

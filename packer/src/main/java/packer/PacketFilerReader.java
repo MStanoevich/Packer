@@ -32,7 +32,7 @@ public class PacketFilerReader {
 
     private Packet createPacket(String weight, String[] itemArray) {
         Packet packet = new Packet();
-        packet.setWeightCapacity(Double.parseDouble(weight));
+        packet.setWeightCapacity(changeWeightRepresentation(Double.parseDouble(weight)));
         packet.setItems(createItem(itemArray));
         return packet;
     }

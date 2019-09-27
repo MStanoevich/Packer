@@ -5,10 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Packet {
-    private double weightCapacity;
+    private int weightCapacity;
     private List<Item> items;
 
-    public Packet(final double weightCapacity, final List<Item> items){
+    public Packet(final int weightCapacity, final List<Item> items){
         this.weightCapacity = weightCapacity;
         this.items = items;
     }
@@ -17,7 +17,7 @@ public class Packet {
 
     }
 
-    public void setWeightCapacity(double weightCapacity) {
+    public void setWeightCapacity(int weightCapacity) {
         this.weightCapacity = weightCapacity;
     }
 
@@ -25,7 +25,7 @@ public class Packet {
         this.items = items;
     }
 
-    public double getWeightCapacity() {
+    public int getWeightCapacity() {
         return weightCapacity;
     }
 
@@ -41,7 +41,7 @@ public class Packet {
         if (this == o) return true;
         if (!(o instanceof Packet)) return false;
         Packet packet = (Packet) o;
-        boolean equalFlag = Double.compare(packet.weightCapacity, weightCapacity) == 0;
+        boolean equalFlag = Integer.compare(packet.weightCapacity, weightCapacity) == 0;
         if(equalFlag && packet != null && packet.getItems() != null && items != null && items.size() == packet.getItems().size()){
             Iterator<Item> itemIterator = items.iterator();
             while(itemIterator.hasNext()){

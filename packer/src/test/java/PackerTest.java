@@ -2,6 +2,7 @@ import exceptions.APIException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import packer.Item;
+import packer.Packer;
 import packer.Packet;
 import packer.PacketFilerReader;
 
@@ -26,6 +27,9 @@ public class PackerTest {
     void checkMatrixInitialisation(){
         Packet packet = createSamplePacketWith1Item();
         int[][] matrix = new int[packet.getItems().size() + 1][packet.getWeightCapacity()+1];
+        matrix[1][6] = packet.getItems().get(0).getCost();
+        Packer packer = new Packer();
+        assertEquals(matrix, packer.createMatrix(packet));
     }
 
     //TODO rename to a more understandable name
@@ -37,16 +41,16 @@ public class PackerTest {
     }
 
     Packet createSamplePacketWith6Items(){
-        return new Packet(81, Arrays.asList(new Item(1,53.38,45),
-                new Item(1,53.38,45),
-                new Item(2,88.62,98),
-                new Item(3,78.48,3),
-                new Item(4,72.30,76),
-                new Item(5,30.18,9),
-                new Item(6,46.34,48)));
+        return new Packet(81, Arrays.asList(new Item(1,5338,45),
+                new Item(1,5338,45),
+                new Item(2,8862,98),
+                new Item(3,7848,3),
+                new Item(4,7230,76),
+                new Item(5,3018,9),
+                new Item(6,4634,48)));
     }
 
     Packet createSamplePacketWith1Item(){
-        return new Packet(8, Arrays.asList(new Item(1,6.00,45)));
+        return new Packet(8, Arrays.asList(new Item(1,600,45)));
     }
 }

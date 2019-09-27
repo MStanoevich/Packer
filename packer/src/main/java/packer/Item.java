@@ -2,10 +2,10 @@ package packer;
 
 public class Item {
     private int index;
-    private double weight;
+    private int weight;
     private int cost;
 
-    public Item(final int index, final double weight, final int cost){
+    public Item(final int index, final int weight, final int cost){
         this.index = index;
         this.weight = weight;
         this.cost = cost;
@@ -19,11 +19,11 @@ public class Item {
         this.index = index;
     }
 
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
@@ -41,7 +41,7 @@ public class Item {
         if (!(o instanceof Item)) return false;
         Item item = (Item) o;
         return index == item.index &&
-                Double.compare(item.weight, weight) == 0 &&
+                Integer.compare(item.weight, weight) == 0 &&
                 cost == item.cost;
     }
 }
